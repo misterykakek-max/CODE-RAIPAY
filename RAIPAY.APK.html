@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RaiPay Referral Invite</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#edf4ff;
+overflow-x:hidden;
+color:#111827;
+}
+
+.page{
+display:none;
+min-height:100vh;
+padding-bottom:90px;
+animation:fade .25s ease;
+}
+
+.active{
+display:block;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(15px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.hero{
+min-height:100vh;
+background:linear-gradient(135deg,#005eff,#00a2ff);
+padding:35px 25px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero-logo{
+width:110px;
+height:110px;
+border-radius:30px;
+background:rgba(255,255,255,.15);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:45px;
+backdrop-filter:blur(8px);
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:45px;
+font-weight:bold;
+}
+
+.hero p{
+margin-top:18px;
+line-height:1.9;
+font-size:15px;
+max-width:500px;
+opacity:.95;
+}
+
+.btn{
+width:100%;
+padding:16px;
+border:none;
+border-radius:18px;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+transition:.2s;
+margin-top:15px;
+}
+
+.btn:active{
+transform:scale(.98);
+}
+
+.btn-primary{
+background:linear-gradient(135deg,#005eff,#00a2ff);
+color:white;
+}
+
+.btn-orange{
+background:linear-gradient(135deg,#ff9800,#ffb300);
+color:white;
+}
+
+.btn-green{
+background:linear-gradient(135deg,#00b894,#00d2a0);
+color:white;
+}
+
+.container{
+padding:20px;
+}
+
+.card{
+background:white;
+padding:22px;
+border-radius:28px;
+box-shadow:0 8px 25px rgba(0,0,0,.05);
+margin-bottom:20px;
+}
+
+.title{
+font-size:28px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.desc{
+color:#666;
+line-height:1.8;
+font-size:14px;
+margin-bottom:20px;
+}
+
+.input{
+width:100%;
+padding:16px;
+border:none;
+border-radius:18px;
+background:#f4f7ff;
+margin-top:14px;
+font-size:15px;
+outline:none;
+}
+
+.notice{
+background:#f4f7ff;
+padding:18px;
+border-radius:20px;
+line-height:1.8;
+margin-top:18px;
+font-size:14px;
+}
+
+.feature{
+display:flex;
+gap:15px;
+align-items:flex-start;
+background:white;
+padding:18px;
+border-radius:22px;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+margin-top:15px;
+}
+
+.feature i{
+font-size:24px;
+color:#005eff;
+margin-top:3px;
+}
+
+.ref-box{
+background:linear-gradient(135deg,#005eff,#00a2ff);
+padding:28px;
+border-radius:30px;
+color:white;
+text-align:center;
+box-shadow:0 10px 35px rgba(0,94,255,.25);
+}
+
+.ref-code{
+background:white;
+color:#111827;
+padding:18px;
+border-radius:20px;
+font-size:26px;
+font-weight:bold;
+letter-spacing:2px;
+margin-top:20px;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+margin-top:20px;
+}
+
+.stat{
+background:white;
+padding:18px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.stat h2{
+color:#005eff;
+font-size:26px;
+}
+
+.navbar{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:white;
+display:flex;
+justify-content:space-around;
+padding:14px 0;
+box-shadow:0 -5px 20px rgba(0,0,0,.08);
+z-index:999;
+}
+
+.nav-item{
+text-align:center;
+font-size:12px;
+color:#555;
+cursor:pointer;
+}
+
+.nav-item i{
+display:block;
+font-size:20px;
+margin-bottom:5px;
+}
+
+.success-box{
+background:linear-gradient(135deg,#00b894,#00d2a0);
+padding:20px;
+border-radius:25px;
+color:white;
+line-height:1.9;
+margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LANDING -->
+
+<div id="landing" class="page active">
+
+<div class="hero">
+
+<div class="hero-logo">
+<i class="fa-solid fa-users"></i>
+</div>
+
+<h1>RaiPay Invite</h1>
+
+<p>
+
+Website resmi untuk mengundang teman bergabung ke RaiPay NeoBank Digital Modern.  
+Bagikan kode referral milikmu dan dapatkan bonus spesial dari setiap pengguna baru yang berhasil mendaftar menggunakan kode referral kamu.
+
+</p>
+
+<button class="btn btn-primary" onclick="showPage('register')">
+MASUK & DAFTAR
+</button>
+
+</div>
+
+</div>
+
+<!-- REGISTER -->
+
+<div id="register" class="page">
+
+<div class="container">
+
+<div class="card">
+
+<div class="title">
+Daftar RaiPay
+</div>
+
+<div class="desc">
+
+Silakan isi data dengan benar agar akun RaiPay kamu dapat digunakan untuk sistem referral, bonus pengguna baru, dan fitur NeoBank digital modern lainnya.
+
+</div>
+
+<input class="input" id="nama" placeholder="Nama yang terdaftar di RaiPay">
+
+<input class="input" id="wa" placeholder="Nomor WhatsApp aktif">
+
+<input class="input" id="gmail" placeholder="Gmail aktif">
+
+<input class="input" id="alamat" placeholder="Alamat lengkap">
+
+<button class="btn btn-primary" onclick="daftarAkun()">
+DAFTAR SEKARANG
+</button>
+
+</div>
+
+<div class="feature">
+<i class="fa-solid fa-gift"></i>
+
+<div>
+<b>Bonus Referral</b><br>
+<small>
+Undang teman menggunakan kode referral dan dapatkan bonus spesial setiap ada pengguna baru yang berhasil bergabung.
+</small>
+</div>
+
+</div>
+
+<div class="feature">
+<i class="fa-solid fa-shield"></i>
+
+<div>
+<b>Sistem Aman</b><br>
+<small>
+Data pengguna dilindungi dan sistem referral diperbarui agar lebih cepat dan stabil.
+</small>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- REFERRAL PAGE -->
+
+<div id="referral" class="page">
+
+<div class="container">
+
+<div class="ref-box">
+
+<h2>🎉 Kode Referral Kamu</h2>
+
+<p style="margin-top:15px;line-height:1.8;">
+
+Bagikan kode referral ini ke teman kamu agar mereka bisa bergabung ke RaiPay dan kamu mendapatkan bonus pengguna baru.
+
+</p>
+
+<div class="ref-code" id="refCode">
+RPX-827182
+</div>
+
+<button class="btn btn-orange" onclick="acakKode()">
+ACAK KODE BARU
+</button>
+
+<button class="btn btn-green" onclick="copyKode()">
+SALIN KODE REFERRAL
+</button>
+
+</div>
+
+<div class="success-box">
+
+<b>📢 INFORMASI PENTING</b><br><br>
+
+• Setiap pengguna baru yang mendaftar menggunakan kode referral kamu akan tercatat otomatis.<br><br>
+
+• Kode referral dapat diacak kapan saja menggunakan tombol acak kode.<br><br>
+
+• Semakin banyak teman yang bergabung, semakin besar bonus referral yang bisa kamu dapatkan.<br><br>
+
+• RaiPay terus mengembangkan sistem NeoBank modern dengan fitur premium dan keamanan terbaru.
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<h2 id="joinCount">0</h2>
+<p>Teman Bergabung</p>
+</div>
+
+<div class="stat">
+<h2 id="bonusCount">Rp 0</h2>
+<p>Total Bonus</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PROFILE -->
+
+<div id="profile" class="page">
+
+<div class="container">
+
+<div class="card">
+
+<div class="title">
+Profil Pengguna
+</div>
+
+<div class="notice">
+
+<b>Nama:</b><br>
+<span id="pNama">-</span><br><br>
+
+<b>No WhatsApp:</b><br>
+<span id="pWa">-</span><br><br>
+
+<b>Gmail:</b><br>
+<span id="pGmail">-</span><br><br>
+
+<b>Alamat:</b><br>
+<span id="pAlamat">-</span>
+
+</div>
+
+<button class="btn btn-primary"
+onclick="window.open('https://wa.me/6283869294563')">
+CHAT ADMIN
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="nav-item" onclick="showPage('register')">
+<i class="fa-solid fa-house"></i>
+Home
+</div>
+
+<div class="nav-item" onclick="showPage('referral')">
+<i class="fa-solid fa-users"></i>
+Referral
+</div>
+
+<div class="nav-item" onclick="showPage('profile')">
+<i class="fa-solid fa-user"></i>
+Profile
+</div>
+
+</div>
+
+<script>
+
+function showPage(id){
+
+document.querySelectorAll('.page')
+.forEach(page=>page.classList.remove('active'));
+
+document.getElementById(id)
+.classList.add('active');
+
+window.scrollTo(0,0);
+
+}
+
+function daftarAkun(){
+
+const nama =
+document.getElementById('nama').value;
+
+const wa =
+document.getElementById('wa').value;
+
+const gmail =
+document.getElementById('gmail').value;
+
+const alamat =
+document.getElementById('alamat').value;
+
+if(nama=='' || wa=='' || gmail=='' || alamat==''){
+alert('Lengkapi semua data');
+return;
+}
+
+localStorage.setItem('rpNama',nama);
+localStorage.setItem('rpWa',wa);
+localStorage.setItem('rpGmail',gmail);
+localStorage.setItem('rpAlamat',alamat);
+
+document.getElementById('pNama').innerText = nama;
+document.getElementById('pWa').innerText = wa;
+document.getElementById('pGmail').innerText = gmail;
+document.getElementById('pAlamat').innerText = alamat;
+
+showPage('referral');
+
+}
+
+function randomCode(){
+
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+let result = 'RPX-';
+
+for(let i=0;i<6;i++){
+
+result += chars.charAt(
+Math.floor(Math.random()*chars.length)
+);
+
+}
+
+return result;
+
+}
+
+function acakKode(){
+
+document.getElementById('refCode').innerText =
+randomCode();
+
+}
+
+function copyKode(){
+
+const kode =
+document.getElementById('refCode').innerText;
+
+navigator.clipboard.writeText(kode);
+
+alert('Kode referral berhasil disalin');
+
+}
+
+document.getElementById('refCode').innerText =
+randomCode();
+
+if(localStorage.getItem('rpNama')){
+
+document.getElementById('pNama').innerText =
+localStorage.getItem('rpNama');
+
+document.getElementById('pWa').innerText =
+localStorage.getItem('rpWa');
+
+document.getElementById('pGmail').innerText =
+localStorage.getItem('rpGmail');
+
+document.getElementById('pAlamat').innerText =
+localStorage.getItem('rpAlamat');
+
+}
+
+</script>
+
+</body>
+</html>
